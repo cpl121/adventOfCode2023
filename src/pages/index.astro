@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const CALENDAR = new Array(25).fill(0)
+const BASE_URL = "https://adventofcode.com/2023/day"
+
+// TODO: Fetch different images by API
+const CHRISTMAS_API = "https://img.freepik.com/free-photo/christmas-holidays-composition_658428-348.jpg?size=626&ext=jpg&ga=GA1.1.447831323.1701279307&semt=sph"
+---
+
+<Layout title="Welcome to Advent of Code 2023">
+	<main>
+		<h1><span class="bg-gradient-to-r from-red-600 from-20% via-white via-40% to-emerald-500 to-80% inline-block text-transparent bg-clip-text">Welcome to Advent of Code 2023</span></h1>
+		<ul role="list" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+		{CALENDAR.map(async (_, index) => 
+			<Card href={`${BASE_URL}/${index + 1}`} day={index + 1} image={CHRISTMAS_API} />
+		)}
+		</ul>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+</style>

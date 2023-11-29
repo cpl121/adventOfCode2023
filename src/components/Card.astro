@@ -1,0 +1,35 @@
+---
+interface Props {
+	day: number;
+	href: string;
+	image: string;
+}
+
+const { href, day, image } = Astro.props;
+
+// TODO: Improve handle dates
+const DATE_OF_CHALLENGE_DAY = new Date(Date.UTC(2023, 11, day, 0, 0, 0, 0))
+const isVisibleCard = Date.now() >=  DATE_OF_CHALLENGE_DAY.getTime()
+---
+
+<!-- <div class="relative rounded-2xl p-8">
+	<div class="absolute -inset-px animate-spin-slow bg-gradient-to-r from-red-600 from-20% via-white via-40% to-emerald-500 to-80% rounded-2xl" aria-hidden="true"></div>
+	<div class="absolute inset-0 animate-spin-slow bg-zinc-900 rounded-2xl" aria-hidden="true"></div>
+	<div class="z-10 text-zinc-100">Nice border around me!</div>
+</div> -->
+
+<li class={`flex align-center border-4 rounded-md`}>
+	{isVisibleCard ? (
+		<a href={href} class="w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover" style={`background-image: url(${image});`} target="_blank" rel="noopener noreferrer">
+			<span>
+				Day {day}
+			</span>
+		</a>
+	) : (
+		<span class="w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover opacity-25" style={`background-image: url(${image});`}>
+			<span>
+				Day {day}
+			</span>
+		</>
+	)}
+</li>
