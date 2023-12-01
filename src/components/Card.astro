@@ -18,18 +18,24 @@ const isVisibleCard = Date.now() >=  DATE_OF_CHALLENGE_DAY.getTime()
 	<div class="z-10 text-zinc-100">Nice border around me!</div>
 </div> -->
 
-<li class={`flex align-center border-4 rounded-md`}>
+<li class={`flex border-4 rounded-md w-28 h-28`}>
 	{isVisibleCard ? (
-		<a href={href} class="w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover" style={`background-image: url(${image});`} target="_blank" rel="noopener noreferrer">
-			<span>
+		<a href={href} class="name" style={`background-image: url(${image});`} target="_blank" rel="noopener noreferrer">
+			<span class="flex shrink-0">
 				Day {day}
 			</span>
 		</a>
 	) : (
-		<span class="w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover opacity-25" style={`background-image: url(${image});`}>
-			<span>
+		<span class="name opacity-25" style={`background-image: url(${image});`}>
+			<span class="flex shrink-0">
 				Day {day}
 			</span>
 		</>
 	)}
 </li>
+
+<style>
+	.name {
+		@apply flex items-center justify-center w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover;
+	}
+</style>
