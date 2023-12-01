@@ -557,6 +557,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.8.tgz#c8285183dbdb17008578dbacb6e22748709b4822"
   integrity sha512-bfZ0cQ1uZs2PqpulNL5j/3w+GDhP36k1K5c38QdQg+Swy51jFZWWeIkteNsufkQxp986wnqRRsb/bHbY1WQ7TA==
 
+"@fontsource/twinkle-star@^5.0.17":
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/@fontsource/twinkle-star/-/twinkle-star-5.0.17.tgz#8a0ba272c27beb41539942262bed1ff223cd602c"
+  integrity sha512-Y8geTc67IQ0YXrSLqAqFoyT8bCx3CaY/0FaWAOXEBEpq2hgkuti5DtpHo8v2kIjGTTNcbsP9zbVHARL4cGlrJA==
+
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz#7e02e6eb5df901aaedb08514203b096614024098"
