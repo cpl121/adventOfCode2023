@@ -10,6 +10,13 @@ const { href, day, image } = Astro.props;
 // TODO: Improve handle dates
 const DATE_OF_CHALLENGE_DAY = new Date(Date.UTC(2023, 11, day, 0, 0, 0, 0))
 const isVisibleCard = Date.now() >=  DATE_OF_CHALLENGE_DAY.getTime()
+
+// var element = document.querySelector(".door");
+// element.addEventListener("click", toggleDoor);
+
+// function toggleDoor() {
+//   element.classList.toggle("doorOpen");
+// }
 ---
 
 <!-- <div class="relative rounded-2xl p-8">
@@ -18,24 +25,47 @@ const isVisibleCard = Date.now() >=  DATE_OF_CHALLENGE_DAY.getTime()
 	<div class="z-10 text-zinc-100">Nice border around me!</div>
 </div> -->
 
-<li class={`flex border-4 rounded-md w-28 h-28`}>
-	{isVisibleCard ? (
-		<a href={href} class="name" style={`background-image: url(${image});`} target="_blank" rel="noopener noreferrer">
-			<span class="flex shrink-0">
-				Day {day}
-			</span>
-		</a>
-	) : (
-		<span class="name opacity-25" style={`background-image: url(${image});`}>
-			<span class="flex shrink-0">
-				Day {day}
-			</span>
-		</>
-	)}
+<li class={`flex backDoor border-4 rounded-md w-28 h-28`}>
+	<div class="door">
+	<li class={`flex  border-4 rounded-md w-28 h-28`}>
+		{isVisibleCard ? (
+			<a href={href} class="name" style={`background-image: url(${image});`} target="_blank" rel="noopener noreferrer">
+				<span class="flex shrink-0">
+					Day {day}
+				</span>
+			</a>
+		) : (
+			<span class="name opacity-25" style={`background-image: url(${image});`}>
+				<span class="flex shrink-0">
+					Day {day}
+				</span>
+			</>
+		)}
+	</div>
 </li>
 
 <style>
 	.name {
 		@apply flex items-center justify-center w-full h-full bg-local p-8 bg-no-repeat bg-origin-border bg-cover;
+	}
+
+	.backDoor{
+		background-color: #333;
+		position:relative;
+	}
+
+	.door {
+		background-color: brown;
+		top:0px;
+		left:0px;
+		
+		transform-origin: left;
+		/*Speed of the Door animation*/
+		transition: all 0.5s ease-in-out;
+	}
+
+	.doorOpen {
+		/*prespectiv creates the door open effect*/
+		transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
 	}
 </style>
