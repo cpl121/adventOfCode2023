@@ -18,10 +18,10 @@ export function challenge1() {
 
 function getCalibrationValue(line: string): number {
     // const array = [...line.matchAll(/[0-9]/g)];
-    const array = [...line.matchAll(/[0-9]|one|two|three|four|five|six|seven|eight|nine/g)];
+    const array = [...line.matchAll(/(?=([0-9]|one|two|three|four|five|six|seven|eight|nine))./g)];
     
-    const firstNumber = getNumber(array[0]?.[0])
-    const lastNumber = getNumber(array[array.length - 1]?.[0])
+    const firstNumber = getNumber(array[0]?.[1])
+    const lastNumber = getNumber(array[array.length - 1]?.[1])
     
     return Number(firstNumber + lastNumber)
 }
