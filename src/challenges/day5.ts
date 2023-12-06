@@ -99,7 +99,6 @@ export function challenge5() {
         .filter(Boolean) as [number, number][];
     
     let parts: number[][] = seeds_2.map(([from, to]) => [from, to]);
-    console.log("init parts", parts);
 
     for (const ranges of maps) {
         const newParts = [];
