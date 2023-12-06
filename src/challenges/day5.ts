@@ -72,6 +72,62 @@ export function challenge5() {
     }
     console.log("minNumber", minNumber);
 
+    // Part 2
+    const [seedsLine, ...lines] = DATA.trim().split("\n\n");
+    const seedsInput: number[] = seedsLine
+        .trim()
+        .split("seeds:")[1]
+        .trim()
+        .split(" ")
+        .map(Number);
+     
+
+    const maps: [ number, number, number ][][] = lines.map(
+    (part: string) =>
+        part
+        .trim()
+        .split("\n")
+        .map((line) => line.trim().split(" ").map(Number)) as [
+        number,
+        number,
+        number,
+        ][],
+    );    
+    
+    const seeds_2: [number, number][] = seedsInput
+        .map((seed, i) => (i % 2 === 0 ? [seed, seed + seedsInput[i + 1] - 1] : null))
+        .filter(Boolean) as [number, number][];
+    
+    let parts: number[][] = seeds_2.map(([from, to]) => [from, to]);
+    console.log("init parts", parts);
+
+    for (const ranges of maps) {
+        const newParts = [];
+        for (const part of parts) {
+            let [start, end] = part;
+
+            while (start <= end) {
+            const range = ranges.find(
+                (range) => start >= range[1] && start <= range[1] + range[2] - 1,
+            );
+            if (range) {
+                const rangeEnd = Math.min(end, range[1] + range[2] - 1);
+                newParts.push([
+                start + range[0] - range[1],
+                rangeEnd + range[0] - range[1],
+                ]);
+                start = rangeEnd + 1;
+            } else {
+                start++;
+            }
+            }
+        }
+
+        parts = newParts;
+    }
+
+    const minNumber_2: number = Math.min(...parts.map((part) => part[0]));
+    console.log("minNumber_2", minNumber_2);
 }
 
 function getNextSeedByStep(seed: number, stepInfo: string[]): number {
